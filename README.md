@@ -1,8 +1,8 @@
 # TASK 
 
 As port 1000 was free I decided to use that , further I have used Postman for API testing
-
-- These are the following commands for all the required functionalities:
+<br>
+These are the following commands for all the required functionalities:
 
 - CREATE A NEW USER http://localhost:10000/users
 <br>
