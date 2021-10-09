@@ -1,5 +1,4 @@
 # TASK 
-<img src="https://leadsbridge.com/wp-content/themes/leadsbridge/img/integration-lg-logos/logo251.png" />
 
 As port 1000 was free I decided to use that , 
 These are the following commands for all the required functionalities:
