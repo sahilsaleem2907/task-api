@@ -3,7 +3,7 @@
 These are the following commands for all the required functionalities:
 
 - CREATE A NEW USER http://localhost:10000/users
-![Image1](screenshots/create_user.png) 
+![Image1](screenshots/create_user.PNG) 
 - CREATE A NEW POST http://localhost:10000/posts
 ![Image2](screenshots/create-post.png) 
 - GET USER USING ID http://localhost:10000/users/sahilsal
@@ -16,16 +16,7 @@ These are the following commands for all the required functionalities:
 By Default I have used 'sahilsal' as the id and made it global , as I have not taken any custom input from the user.
 
 Backend Architecture:
-                  |
-                  |
-                  |-----------                  
-                  |
-                  |
-instagram-------- |
-                  |  
-                  |----------- 
-                  |  
-                  |  
+
 Here is the ss from the backend mongoDB Atlas:
 - user Collection ![Image6](screenshots/user-db.png)
 - post Collection ![Image7](screenshots/post-db.png)
