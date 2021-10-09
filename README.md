@@ -31,4 +31,5 @@ By Default I have used **'sahilsal'** as the id and made it global , as I have n
 
 - EncodingURL-compatible base64 format for password to be more secure 
 - Pagination implemented
+- Thread Safety implemented
 
