@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"sync"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -35,6 +36,8 @@ type Posts []Post
 
 var gid = "sahilsal" //GLOBAL INSTAGRAM ID USED FOR ALL OF THE FUNCTIONS
 
+var lock sync.Mutex //USED FOR THREAD SAFETY 
+
 //Function to implement PAGINATION
 func Pagination(r *http.Request, FindOptions *options.FindOptions) (int64, int64) {
 	if r.URL.Query().Get("page") != "" && r.URL.Query().Get("limit") != "" {
@@ -58,6 +61,11 @@ func Pagination(r *http.Request, FindOptions *options.FindOptions) (int64, int64
 
 //Function to get a USER by ID
 func getUsingId(w http.ResponseWriter, r *http.Request) {
+	
+	//THREAD SAFETY
+	lock.Lock()
+	defer lock.Unlock()
+	
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
 		log.Fatal(err)
@@ -104,12 +112,18 @@ func getUsingId(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("Endpoint hit:All users endpoint")
 	json.NewEncoder(w).Encode(Users)
+	
+	time.Sleep(1 * time.Second)
 
 }
 
 //Function to get a POST by ID
 func getPostUsingId(w http.ResponseWriter, r *http.Request) {
-
+	
+	//THREAD SAFETY
+	lock.Lock()
+	defer lock.Unlock()
+	
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
 		log.Fatal(err)
@@ -157,11 +171,17 @@ func getPostUsingId(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("Endpoint hit:All posts endpoint")
 	json.NewEncoder(w).Encode(Posts)
+	
+	time.Sleep(1 * time.Second)
 
 }
 
 //Function to get all POST'S for a particular ID
 func getAllPostUsingId(w http.ResponseWriter, r *http.Request) {
+	
+	//THREAD SAFETY
+	lock.Lock()
+	defer lock.Unlock()
 
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
@@ -207,11 +227,18 @@ func getAllPostUsingId(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("Endpoint hit:All posts endpoint")
+	
+	time.Sleep(1 * time.Second)
 
 }
 
 //Function to CREATE A USER
 func createUser(w http.ResponseWriter, r *http.Request) {
+	
+	//THREAD SAFETY
+	lock.Lock()
+	defer lock.Unlock()
+	
 	fmt.Fprintf(w, "Test POST endpoint worked")
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
@@ -248,10 +275,17 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(userResult.InsertedID)
+	
+	time.Sleep(1 * time.Second)
 }
 
 //Function to CREATE A POST
 func createPost(w http.ResponseWriter, r *http.Request) {
+	
+	//THREAD SAFETY
+	lock.Lock()
+	defer lock.Unlock()
+	
 	fmt.Fprintf(w, "Test POST endpoint worked")
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
@@ -284,13 +318,23 @@ func createPost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(postResult.InsertedID)
+	
+	time.Sleep(1 * time.Second)
 }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
+	
+	//THREAD SAFETY
+	lock.Lock()
+	defer lock.Unlock()
+	
 	fmt.Fprintf(w, "Instagram API by Sahil Saleem for Appointy Tech Round")
+	
+	time.Sleep(1 * time.Second)
 }
 
 func handleRequests() {
+	
 	myRouter := mux.NewRouter().StrictSlash(true)
 	getIdPath := "/users/" + gid
 	getPostPathById := "/posts/" + gid
