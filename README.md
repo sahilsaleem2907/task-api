@@ -12,7 +12,7 @@ These are the following commands for all the required functionalities:
 - GET USER USING ID http://localhost:10000/users/sahilsal
 <br>
 <img src="https://github.com/sahilsaleem2907/appointy-task-api-instagram/blob/master/screenshots/search_user_by_id.PNG" width="600" />
-- GET ONE POST USING ID http://localhost:10000/posts/sahilsal
+- GET A POST USING ID http://localhost:10000/posts/sahilsal
 <br>
 <img src="https://github.com/sahilsaleem2907/appointy-task-api-instagram/blob/master/screenshots/get_post_by_id_unq.PNG" width="600" />
 - GET ALL POSTS USING ID http://localhost:10000/posts/users/sahilsal
