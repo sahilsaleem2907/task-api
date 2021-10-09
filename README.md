@@ -21,6 +21,6 @@ Here is the ss from the backend mongoDB Atlas:
 - user Collection ![Image6](screenshots/user-db.PNG)
 - post Collection ![Image7](screenshots/post-db.PNG)
 
-EncodingURL-compatible base64 format for password to be more secure 
-Pagination
-MongoDB Atlas for Backend
+- EncodingURL-compatible base64 format for password to be more secure 
+- Pagination implemented
+
