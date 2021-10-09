@@ -7,7 +7,7 @@ These are the following commands for all the required functionalities:
 <br>
 <img src="https://github.com/sahilsaleem2907/appointy-task-api-instagram/blob/master/screenshots/create_user.PNG" width="600" />
 - CREATE A NEW POST http://localhost:10000/posts
- <br>
+<br>
 <img src="https://github.com/sahilsaleem2907/appointy-task-api-instagram/blob/master/screenshots/create-post.PNG" width="600" />
 - GET USER USING ID http://localhost:10000/users/sahilsal
 <br>
