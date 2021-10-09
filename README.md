@@ -15,9 +15,7 @@ These are the following commands for all the required functionalities:
 
 By Default I have used 'sahilsal' as the id and made it global , as I have not taken any custom input from the user.
 
-Backend Architecture:
-
-Here is the ss from the backend mongoDB Atlas:
+Backend architecturee:
 - user Collection ![Image6](screenshots/user-db.PNG)
 - post Collection ![Image7](screenshots/post-db.PNG)
 
