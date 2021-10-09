@@ -33,7 +33,7 @@ type Post struct {
 type Users []User
 type Posts []Post
 
-var gid = "kevinsystrom" //GLOBAL INSTAGRAM ID USED FOR ALL OF THE FUNCTIONS
+var gid = "sahilsal" //GLOBAL INSTAGRAM ID USED FOR ALL OF THE FUNCTIONS
 
 //Function to implement pagination
 func Pagination(r *http.Request, FindOptions *options.FindOptions) (int64, int64) {
