@@ -4,7 +4,7 @@ As port 1000 was free I decided to use that ,
 These are the following commands for all the required functionalities:
 
 - CREATE A NEW USER http://localhost:10000/users
-![Image1](screenshots/create_user.PNG) 
+<img src="https://github.com/sahilsaleem2907/appointy-task-api-instagram/blob/master/screenshots/create_user.PNG" width="200" height="400" />
 - CREATE A NEW POST http://localhost:10000/posts
 ![Image2](screenshots/create-post.PNG) 
 - GET USER USING ID http://localhost:10000/users/sahilsal
