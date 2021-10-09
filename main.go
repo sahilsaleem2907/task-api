@@ -35,7 +35,7 @@ type Posts []Post
 
 var gid = "sahilsal" //GLOBAL INSTAGRAM ID USED FOR ALL OF THE FUNCTIONS
 
-//Function to implement pagination
+//Function to implement PAGINATION
 func Pagination(r *http.Request, FindOptions *options.FindOptions) (int64, int64) {
 	if r.URL.Query().Get("page") != "" && r.URL.Query().Get("limit") != "" {
 		page, _ := strconv.ParseInt(r.URL.Query().Get("page"), 10, 32)
@@ -56,6 +56,7 @@ func Pagination(r *http.Request, FindOptions *options.FindOptions) (int64, int64
 	return 0, 0
 }
 
+//Function to get a USER by ID
 func getUsingId(w http.ResponseWriter, r *http.Request) {
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
@@ -106,6 +107,7 @@ func getUsingId(w http.ResponseWriter, r *http.Request) {
 
 }
 
+//Function to get a POST by ID
 func getPostUsingId(w http.ResponseWriter, r *http.Request) {
 
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
@@ -158,6 +160,7 @@ func getPostUsingId(w http.ResponseWriter, r *http.Request) {
 
 }
 
+//Function to get all POST'S for a particular ID
 func getAllPostUsingId(w http.ResponseWriter, r *http.Request) {
 
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
@@ -207,6 +210,7 @@ func getAllPostUsingId(w http.ResponseWriter, r *http.Request) {
 
 }
 
+//Function to CREATE A USER
 func createUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Test POST endpoint worked")
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
@@ -227,13 +231,13 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	instagramDatabase := client.Database("instagram")
 	usersCollection := instagramDatabase.Collection("users")
 
-	pass := "mikekr2018"
+	pass := "sahil123"
 	uEnc := b64.URLEncoding.EncodeToString([]byte(pass)) //Encoded the password using URL encoding for more security
 
 	userResult, err := usersCollection.InsertOne(ctx, bson.D{
-		{"id", "mikekrieger"},
-		{"Name", "mike"},
-		{"Email", "mikek@gmail.com"},
+		{"id", "sahilsal"},
+		{"Name", "sahil"},
+		{"Email", "sahil@gmail.com"},
 		{"Pass", uEnc},
 	})
 
@@ -246,6 +250,7 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(userResult.InsertedID)
 }
 
+//Function to CREATE A POST
 func createPost(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Test POST endpoint worked")
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<password>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
@@ -266,11 +271,11 @@ func createPost(w http.ResponseWriter, r *http.Request) {
 	instagramDatabase := client.Database("instagram")
 	postsCollection := instagramDatabase.Collection("posts")
 
-	currentTime := time.Now()
+	currentTime := time.Now() //Used for time stamp
 	postResult, err := postsCollection.InsertOne(ctx, bson.D{
-		{"id", "kevinsystrom"},
-		{"caption", "Kevin's  picture"},
-		{"imageURL", "https://www.appointy.com/black-friday/uploads/2020/08/Appointy-Logo1.svg"},
+		{"id", "sahilsal"},
+		{"caption", "Sahil's first  picture"},
+		{"imageURL", "https://www.appointy.com/black-friday/uploads/2020/08/Appointy-Logo1.svg"}, //Appointy Logo used as an example
 		{"Posted TimeStamp", currentTime.Format("2006-January-02 15:04:05")},
 	})
 
