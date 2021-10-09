@@ -57,7 +57,7 @@ func Pagination(r *http.Request, FindOptions *options.FindOptions) (int64, int64
 }
 
 func getUsingId(w http.ResponseWriter, r *http.Request) {
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://user-1-appointy:appointy123@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<username>:<passwor>@cluster0.j7t2l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
 		log.Fatal(err)
 	}
